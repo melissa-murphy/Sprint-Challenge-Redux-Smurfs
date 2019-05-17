@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './App.css';
-import { getsmurfs } from './../actions/index';
+import { getSmurfs } from './../actions/index';
 import SmurfList from './SmurfList';
 /*
  to wire this component up you're going to need a few things.
@@ -18,13 +18,13 @@ class App extends Component {
 
   componentDidMount() {
     console.log(`CDM: fetchingSmurfs`);
-    this.props.getsmurfs();
+    this.props.getSmurfs();
   }
 
   render() {
-    if (this.props.fetchingSmurfs) {
-      return <div> ... Loading</div>;
-    }
+    // if (this.props.fetchingSmurfs) {
+    //   return <div> ... Loading</div>;
+    // }
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -39,7 +39,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(`Current state: ` + state.smurfs);
+  // console.log(`Current state: ` + state.smurfs);
   return {
     smurfs: state.smurfs.smurfs,
     fetchingSmurfs: state.smurfs.fetchingSmurfs,
@@ -49,5 +49,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getsmurfs }
+  { getSmurfs }
 )(App);

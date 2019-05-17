@@ -19,12 +19,12 @@ import axios from 'axios';
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const FETCHING_SMURFS_SUCCESS = 'FETCHING_SMURFS_SUCCESS';
 export const FETCHING_SMURFS_FAILURE = 'FETCHING_SMURFS_FAILURE';
-export const getsmurfs = () => dispatch => {
+export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCHING_SMURFS });
   axios
     .get(`http://localhost:3333/smurfs`)
     .then(res => {
-      console.log('FETCHING_SMURFS in progress');
+      console.log(res.data);
       dispatch({ type: FETCHING_SMURFS_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -39,18 +39,40 @@ export const getsmurfs = () => dispatch => {
 export const ADD_SMURFS = 'ADD_SMURFS';
 export const ADD_SMURFS_SUCCESS = 'ADD_SMURFS_SUCCESS';
 export const ADD_SMURFS_FAILURE = 'ADD_SMURFS_FAILURE';
-export const addsmurfs = smurf => dispatch => {
+export const addSmurfs = smurf => dispatch => {
   dispatch({ type: ADD_SMURFS });
   console.log('ADD_SMURFS in progress');
   axios
     .post(`http://localhost:3333/smurfs`, smurf)
     .then(res => {
+      console(res.data);
       dispatch({ type: ADD_SMURFS_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);
       dispatch({
         type: ADD_SMURFS_FAILURE,
+        payload: err
+      });
+    });
+};
+
+export const REMOVE_SMURFS = 'REMOVE_SMURFS';
+export const REMOVE_SMURFS_SUCCESS = 'REMOVE_SMURFS_SUCCESS';
+export const REMOVE_SMURFS_FAILURE = 'REMOVE_SMURFS_FAILURE';
+export const removeSmurfs = id => dispatch => {
+  dispatch({ type: REMOVE_SMURFS });
+  console.log('ADD_SMURFS in progress');
+  axios
+    .post(`http://localhost:3333/smurfs/${id}`)
+    .then(res => {
+      console(res.data);
+      dispatch({ type: REMOVE_SMURFS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: REMOVE_SMURFS_FAILURE,
         payload: err
       });
     });
