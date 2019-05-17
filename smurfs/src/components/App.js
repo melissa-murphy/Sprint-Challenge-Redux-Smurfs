@@ -41,9 +41,9 @@ class App extends Component {
 const mapStateToProps = state => {
   console.log(`Current state: ` + state.smurfs);
   return {
-    smurfs: state.smurfReducer.characters,
-    fetchingSmurfs: state.smurfReducer.isLoading,
-    error: state.smurfReducer.error
+    smurfs: state.smurfs.smurfs,
+    fetchingSmurfs: state.smurfs.fetchingSmurfs,
+    error: state.smurfs.error
   };
 };
 
