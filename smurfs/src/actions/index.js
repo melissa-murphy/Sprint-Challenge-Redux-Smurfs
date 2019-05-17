@@ -19,7 +19,7 @@ import axios from 'axios';
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const FETCHING_SMURFS_SUCCESS = 'FETCHING_SMURFS_SUCCESS';
 export const FETCHING_SMURFS_FAILURE = 'FETCHING_SMURFS_FAILURE';
-export const getSmurphs = () => dispatch => {
+export const getsmurfs = () => dispatch => {
   dispatch({ type: FETCHING_SMURFS });
   axios
     .get(`http://localhost:3333/smurfs`)
@@ -39,7 +39,7 @@ export const getSmurphs = () => dispatch => {
 export const ADD_SMURFS = 'ADD_SMURFS';
 export const ADD_SMURFS_SUCCESS = 'ADD_SMURFS_SUCCESS';
 export const ADD_SMURFS_FAILURE = 'ADD_SMURFS_FAILURE';
-export const addSmurphs = smurf => dispatch => {
+export const addsmurfs = smurf => dispatch => {
   dispatch({ type: ADD_SMURFS });
   console.log('ADD_SMURFS in progress');
   axios
