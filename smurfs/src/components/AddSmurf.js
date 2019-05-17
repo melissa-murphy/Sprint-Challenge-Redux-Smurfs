@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { addSmurfs } from './../actions/index';
 
 class AddSmurf extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       newSmurf: {
         name: '',
@@ -42,7 +42,7 @@ class AddSmurf extends Component {
     return (
       <div className="add-smurf">
       <br />
-        <form onSubmit={this.addSmurfs}>
+        <form onSubmit={this.addSmurf}>
           <input
             onChange={this.handleInputChange}
             placeholder="name"
@@ -61,7 +61,7 @@ class AddSmurf extends Component {
             value={this.state.newSmurf.height}
             name="height"
           />
-          <button onClick={this.addSmurfs}>Add to the village</button>
+          <button onClick={this.addSmurf}>Add to the village</button>
         </form>
       </div>
     );
