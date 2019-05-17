@@ -28,7 +28,10 @@ import {
   FETCHING_SMURFS_FAILURE,
   ADD_SMURFS,
   ADD_SMURFS_SUCCESS,
-  ADD_SMURFS_FAILURE
+  ADD_SMURFS_FAILURE,
+  REMOVE_SMURFS,
+  REMOVE_SMURFS_SUCCESS,
+  REMOVE_SMURFS_FAILURE
 } from './../actions/index';
 
 const initialState = {
@@ -76,10 +79,30 @@ export const smurfReducer = (state = initialState, action) => {
         error: action.payload
       };
     }
+    case REMOVE_SMURFS: {
+      return {
+        ...state,
+        fetchingSmurfs: true
+      };
+    }
+    case REMOVE_SMURFS_SUCCESS: {
+      return {
+        ...state,
+        smurfs: action.payload,
+        fetchingSmurfs: false
+      };
+    }
+    case REMOVE_SMURFS_FAILURE: {
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        error: action.payload
+      };
+    }
     default: {
       return state;
     }
   }
 };
 
-export default smurfReducer;
+export default smurfsReducer;

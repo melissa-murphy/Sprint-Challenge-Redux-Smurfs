@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import './App.css';
 import { getSmurfs } from './../actions/index';
 import SmurfList from './SmurfList';
+import AddSmurf from './AddSmurf';
+// import smurfReducer from './../reducers/smurfReducer';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -33,6 +35,7 @@ class App extends Component {
         <div>Have fun!</div> */}
 
         <SmurfList smurfs={this.props.smurfs} />
+        <AddSmurf />
       </div>
     );
   }
@@ -41,9 +44,9 @@ class App extends Component {
 const mapStateToProps = state => {
   // console.log(`Current state: ` + state.smurfs);
   return {
-    smurfs: state.smurfs.smurfs,
-    fetchingSmurfs: state.smurfs.fetchingSmurfs,
-    error: state.smurfs.error
+    smurfs: state.smurfReducer.smurfs,
+    fetchingSmurfs: state.smurfReducer.fetchingSmurfs,
+    error: state.smurfReducer.error
   };
 };
 
