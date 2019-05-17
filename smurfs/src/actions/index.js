@@ -39,7 +39,7 @@ export const getSmurphs = () => dispatch => {
 export const ADD_SMURFS = 'ADD_SMURFS';
 export const ADD_SMURFS_SUCCESS = 'ADD_SMURFS_SUCCESS';
 export const ADD_SMURFS_FAILURE = 'ADD_SMURFS_FAILURE';
-export const addSmurphs = () => dispatch => {
+export const addSmurphs = smurf => dispatch => {
   dispatch({ type: ADD_SMURFS });
   console.log('ADD_SMURFS in progress');
   axios
