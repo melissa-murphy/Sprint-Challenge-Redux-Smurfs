@@ -105,4 +105,4 @@ export const smurfReducer = (state = initialState, action) => {
   }
 };
 
-export default smurfsReducer;
+export default smurfReducer;
