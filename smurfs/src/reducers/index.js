@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { smurfReducer } from './starWarsReducer';
+import { smurfReducer } from './smurfReducer';
 
 export default combineReducers({
-  smurfsReducer
+  smurfReducer
 });
