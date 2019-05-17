@@ -20,18 +20,37 @@ export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const FETCHING_SMURFS_SUCCESS = 'FETCHING_SMURFS_SUCCESS';
 export const FETCHING_SMURFS_FAILURE = 'FETCHING_SMURFS_FAILURE';
 export const getSmurphs = () => dispatch => {
-
-  console.log('FETCHING_SMURFS in progress')
   dispatch({ type: FETCHING_SMURFS });
   axios
-    .get(`https://localhost:3333/smurfs/`)
+    .get(`http://localhost:3333/smurfs`)
     .then(res => {
+      console.log('FETCHING_SMURFS in progress');
       dispatch({ type: FETCHING_SMURFS_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);
       dispatch({
         type: FETCHING_SMURFS_FAILURE,
+        payload: err
+      });
+    });
+};
+
+export const ADD_SMURFS = 'ADD_SMURFS';
+export const ADD_SMURFS_SUCCESS = 'ADD_SMURFS_SUCCESS';
+export const ADD_SMURFS_FAILURE = 'ADD_SMURFS_FAILURE';
+export const addSmurphs = () => dispatch => {
+  dispatch({ type: ADD_SMURFS });
+  console.log('ADD_SMURFS in progress');
+  axios
+    .post(`http://localhost:3333/smurfs`, smurf)
+    .then(res => {
+      dispatch({ type: ADD_SMURFS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: ADD_SMURFS_FAILURE,
         payload: err
       });
     });
